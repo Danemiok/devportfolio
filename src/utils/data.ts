@@ -21,7 +21,7 @@ export const experiences: Experience[] = [
     role: 'Developer',
     company: 'Passerelles Numériques Cambodia',
     period: '2021 — Present',
-    description: 'Lead development of web applications using Laravel and React. Collaborated with cross-functional teams to deliver high-quality software solutions for educational initiatives.',
+    description: '',
     active: true
   },
 ];
