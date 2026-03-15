@@ -43,7 +43,7 @@ export default function AnimatedBackground() {
     window.addEventListener('resize', resizeCanvas);
 
     // Initialize particles
-    const particleCount = 30;
+    const particleCount = 50; // 50 for more atoms
     const initialParticles: Particle[] = [];
     
     // Realistic atom colors (hydrogen, oxygen, carbon, nitrogen, etc.)
@@ -56,6 +56,10 @@ export default function AnimatedBackground() {
       '#DDA0DD', // Purple (phosphorus-like)
       '#F4A460', // Brown (iron-like)
       '#87CEEB', // Sky blue (helium-like)
+      '#FFB6C1', // Light pink (lithium-like)
+      '#98D8C8', // Mint (beryllium-like)
+      '#F7DC6F', // Gold (gold-like)
+      '#85C1E2', // Light blue (copper-like)
     ];
     
     for (let i = 0; i < particleCount; i++) {
@@ -63,10 +67,10 @@ export default function AnimatedBackground() {
         id: i,
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 6 + 3, // Increased size: 3-9px instead of 1-4px
-        speedX: (Math.random() - 0.5) * 0.3, // Slower speed for better visibility
-        speedY: (Math.random() - 0.5) * 0.3,
-        opacity: Math.random() * 0.4 + 0.3, // Increased opacity: 0.3-0.7 instead of 0.2-0.7
+        size: Math.random() * 5 + 2, // Slightly smaller range: 2-7px for better performance with more particles
+        speedX: (Math.random() - 0.5) * 0.4, // Slightly faster for more dynamic movement
+        speedY: (Math.random() - 0.5) * 0.4,
+        opacity: Math.random() * 0.3 + 0.4, // Higher opacity: 0.4-0.7 for better visibility
         color: atomColors[Math.floor(Math.random() * atomColors.length)]
       });
     }
@@ -110,10 +114,10 @@ export default function AnimatedBackground() {
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         // Mouse interaction - particles are attracted to cursor
-        if (distance < 200) { // Increased interaction radius: 200px instead of 150px
-          const force = (200 - distance) / 200;
-          particle.x += (dx / distance) * force * 3; // Stronger attraction
-          particle.y += (dy / distance) * force * 3;
+        if (distance < 250) { // Increased interaction radius: 250px for more dramatic effect
+          const force = (250 - distance) / 250;
+          particle.x += (dx / distance) * force * 2.5; // Slightly reduced force for performance
+          particle.y += (dy / distance) * force * 2.5;
         }
 
         // Draw particle
@@ -123,7 +127,7 @@ export default function AnimatedBackground() {
         ctx.fill();
         
         // Add glow effect
-        ctx.shadowBlur = 10;
+        ctx.shadowBlur = 8; // Slightly reduced for performance with more particles
         ctx.shadowColor = particle.color;
         ctx.fill();
         ctx.shadowBlur = 0;
