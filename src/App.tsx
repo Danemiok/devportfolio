@@ -4,8 +4,7 @@ import {
   AboutSection, 
   ExperienceSection, 
   ProjectsSection, 
-  ContactSection, 
-  Footer 
+  ContactSection 
 } from './components';
 import AnimatedBackground from './components/AnimatedBackground';
 import { useTheme } from './hooks/useTheme';
@@ -43,7 +42,6 @@ export default function App() {
           <ContactSection />
         </main>
 
-        <Footer />
       </div>
     </div>
   );
