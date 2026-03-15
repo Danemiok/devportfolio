@@ -14,7 +14,7 @@ export default function Navigation({ activeSection, isDarkMode, onToggleTheme }:
     <nav className="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Rocket className="text-primary w-8 h-8" />
+          {/* <Rocket className="text-primary w-8 h-8" /> */}
           <span className="text-xl font-bold tracking-tight">DevPortfolio</span>
         </div>
         <div className="hidden md:flex items-center gap-8">
