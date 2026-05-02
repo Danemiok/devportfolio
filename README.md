@@ -2,6 +2,10 @@
 
 A personal portfolio website built with React, TypeScript, Tailwind CSS v4, and Motion.
 
+<div align="center">
+  <img width="1903" height="858" alt="HomePage Banner" src="./public/images/HomePage.png" />
+</div>
+
 ## Features
 
 - Animated molecular background
