@@ -1,5 +1,5 @@
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+<img width="1903" height="858" alt="HomePage Banner" src="./public/images/HomePage.png" />
 </div>
 
 # DevPortfolio
@@ -75,7 +75,7 @@ devportfolio/
 ├── index.html              # HTML template
 ├── package.json            # Dependencies and scripts
 ├── tsconfig.json           # TypeScript configuration
-├── vite.config.ts          # Vite configuration
+├── vite.config.js          # Vite configuration
 └── README.md               # This file
 ```
 
