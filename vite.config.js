@@ -8,6 +8,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
+  const apiPort = process.env.API_PORT || env.API_PORT || '3001';
 
   return {
     plugins: [react(), tailwindcss()],
@@ -21,7 +22,7 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       proxy: {
-        '/api': 'http://localhost:3001',
+        '/api': `http://127.0.0.1:${apiPort}`,
       },
       hmr: process.env.DISABLE_HMR !== 'true',
     },
