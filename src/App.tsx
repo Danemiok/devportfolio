@@ -3,8 +3,10 @@ import {
   HeroSection, 
   AboutSection, 
   ExperienceSection, 
+  ResumeSection,
   ProjectsSection, 
-  ContactSection 
+  ContactSection,
+  ScrollToTop 
 } from './components';
 import AnimatedBackground from './components/AnimatedBackground';
 import { useTheme } from './hooks/useTheme';
@@ -32,12 +34,15 @@ export default function App() {
         />
         
         <main>
+          <ScrollToTop />
           <HeroSection orbitSkills={orbitSkills} />
           <AboutSection 
             frontendSkills={frontendSkills} 
-            backendSkills={backendSkills} 
+            backendSkills={backendSkills}
+            tools={orbitSkills}
           />
           <ExperienceSection experiences={experiences} />
+          <ResumeSection />
           <ProjectsSection projects={projects} />
           <ContactSection />
         </main>

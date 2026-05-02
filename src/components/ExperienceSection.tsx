@@ -10,7 +10,7 @@ export default function ExperienceSection({ experiences }: ExperienceSectionProp
     <section id="experience" className="py-20">
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-12">
-          <h2 className="text-3xl font-bold mb-4">Professional Journey</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">Professional Journey</h2>
           <div className="h-1 w-20 bg-primary rounded-full"></div>
         </div>
         <div className="space-y-12">
@@ -25,10 +25,10 @@ export default function ExperienceSection({ experiences }: ExperienceSectionProp
               <div className={`absolute -left-[11px] top-0 size-5 rounded-full border-4 border-background-light dark:border-background-dark ${exp.active ? 'bg-primary' : 'bg-slate-300 dark:bg-slate-700'}`}></div>
               <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
                 <h3 className="text-xl font-bold">{exp.role}</h3>
-                <span className="text-primary font-semibold text-sm">{exp.period}</span>
+                <span className="text-primary font-semibold text-xs md:text-sm">{exp.period}</span>
               </div>
-              <p className="text-slate-500 dark:text-slate-400 font-medium mb-4">{exp.company}</p>
-              <p className="text-slate-600 dark:text-slate-400 max-w-3xl">
+              <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm max-w-3xl">{exp.company}</p>
+              <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm max-w-3xl">
                 {exp.description}
               </p>
             </motion.div>

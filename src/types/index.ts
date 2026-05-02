@@ -1,4 +1,4 @@
-export type Section = 'home' | 'about' | 'skills' | 'experience' | 'projects' | 'contact';
+export type Section = 'home' | 'about' | 'skills' | 'experience' | 'resume' | 'projects' | 'contact';
 
 export interface Skill {
   name: string;
@@ -19,6 +19,7 @@ export interface Project {
   tags: string[];
   description: string;
   image: string;
+  url?: string;
 }
 
 export interface Stat {

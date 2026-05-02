@@ -1,88 +1,195 @@
 import { motion } from 'motion/react';
-import { Mail, MapPin, Github, Linkedin, Send, Phone } from 'lucide-react';
+import { Mail, MapPin, Send, Phone } from 'lucide-react';
+import { useState } from 'react';
 
 export default function ContactSection() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+  const [isSending, setIsSending] = useState(false);
+  const [statusMessage, setStatusMessage] = useState('');
+  const contactEmail = 'dane.miok@student.passerellesnumeriques.org';
+  const mapUrl = 'https://www.google.com/maps?q=Passerelles+Numeriques,+Phnom+Penh,+Cambodia&z=16&output=embed';
+  const mapsLink = 'https://maps.app.goo.gl/MBK93Wdf5vSSEsA68';
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    setIsSending(true);
+    setStatusMessage('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        throw new Error(data?.error || 'Failed to send message.');
+      }
+
+      setStatusMessage('Your message was sent successfully.');
+      setFormData({
+        name: '',
+        email: '',
+        message: '',
+      });
+    } catch (error) {
+      console.error('Failed to send contact form email:', error);
+      const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
+      const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
+      window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+      return;
+    } finally {
+      setIsSending(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
   return (
     <section id="contact" className="py-20">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          <div>
-            <h2 className="text-3xl font-bold mb-6">Let's Touch Me</h2>
-            <p className="text-slate-600 dark:text-slate-400 mb-8 text-lg">
-              I welcome conversations about new projects, creative initiatives, and ways to help achieve your vision.
-            </p>
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="size-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                  <Mail size={20} />
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-slate-500 uppercase tracking-wider">Email</p>
-                  <p className="text-lg font-medium">dane.miok@student.passerellesnumeriques.org</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="size-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                  <MapPin size={20} />
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-slate-500 uppercase tracking-wider">Location</p>
-                  <p className="text-lg font-medium">Passerelles Numériques Cambodia</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="size-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                  <Phone size={20} />
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-slate-500 uppercase tracking-wider">Phone</p>
-                  <p className="text-lg font-medium">+855 816 34649</p>
-                </div>
-              </div>
-              <div className="pt-6 flex gap-4">
-                <a href="#" className="size-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-                  <Github size={23} />
-                </a>
-                <a href="https://www.linkedin.com/in/dane-miok-2789563a2" className="size-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-                  <Linkedin size={23} />
+        <div className="mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">Contact</h2>
+          <div className="mt-4 h-1 w-10 bg-primary rounded-full" />
+        </div>
 
-                </a>
+        <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm max-w-5xl mb-10 leading-relaxed">
+          For this page, I would like to show to you about my contact for everyone who want to contact to me. it is the real of my information, you can contact me by email or phone number.
+        </p>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          <div className="space-y-8">
+            <div className="rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-5 md:p-7">
+              <div className="space-y-6">
+                <div className="flex items-start gap-5">
+                  <div className="size-11 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                    <MapPin size={18} />
+                  </div>
+                  <div>
+                    <p className="text-xs md:text-sm font-semibold text-slate-900 dark:text-white leading-none mb-2">Location:</p>
+                    <p className="text-xs md:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">BP 511, Phum Tropeang Chhuk (Borey Sorla) Sangtak, Street 371, Phnom Penh</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-5">
+                  <div className="size-11 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                    <Mail size={18} />
+                  </div>
+                  <div>
+                    <p className="text-xs md:text-sm font-semibold text-slate-900 dark:text-white leading-none mb-2">Email:</p>
+                    <p className="text-xs md:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">dane.miok@student.passerellesnumeriques.org</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-5">
+                  <div className="size-11 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                    <Phone size={18} />
+                  </div>
+                  <div>
+                    <p className="text-xs md:text-sm font-semibold text-slate-900 dark:text-white leading-none mb-2">Call:</p>
+                    <p className="text-xs md:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">+855 81 634 649</p>
+                  </div>
+                </div>
               </div>
             </div>
+
+            <div className="relative w-full overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-900 shadow-sm">
+              <a
+                href={mapsLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute left-3 top-3 z-10 inline-flex items-center gap-2 rounded-md bg-white/95 px-3 py-1.5 text-xs md:text-sm font-semibold text-slate-900 shadow-sm transition-colors hover:bg-white"
+              >
+                Open in Maps
+                <span aria-hidden="true">↗</span>
+              </a>
+              <iframe
+                title="Google Map of Wat Phnom Daun Penh, Phnom Penh, Cambodia"
+                src={mapUrl}
+                className="h-[200px] w-full md:h-[250px]"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
           </div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xl"
+            className="bg-white dark:bg-slate-800 p-6 md:p-7 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm"
           >
-            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-4" onSubmit={handleSubmit}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs md:text-sm text-slate-700 dark:text-slate-300 mb-2">Your Name</label>
+                  <input
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-3 py-2 text-xs md:text-sm outline-none transition-all focus:border-primary"
+                    type="text"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs md:text-sm text-slate-700 dark:text-slate-300 mb-2">Your Email</label>
+                  <input
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-3 py-2 text-xs md:text-sm outline-none transition-all focus:border-primary"
+                    type="email"
+                    required
+                  />
+                </div>
+              </div>
+
               <div>
-                <label className="block text-sm font-bold mb-2">Name</label>
+                <label className="block text-xs md:text-sm text-slate-700 dark:text-slate-300 mb-2">Subject</label>
                 <input
-                  className="w-full bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary px-4 py-3 outline-none transition-all"
-                  placeholder="Your Name"
+                  className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-3 py-2 text-xs md:text-sm outline-none transition-all focus:border-primary"
                   type="text"
                 />
               </div>
+
               <div>
-                <label className="block text-sm font-bold mb-2">Email</label>
-                <input
-                  className="w-full bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary px-4 py-3 outline-none transition-all"
-                  placeholder="Dane@gmail.com"
-                  type="email"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-bold mb-2">Message</label>
+                <label className="block text-xs md:text-sm text-slate-700 dark:text-slate-300 mb-2">Message</label>
                 <textarea
-                  className="w-full bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary px-4 py-3 outline-none transition-all"
-                  placeholder="Tell me about your project..."
-                  rows={4}
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-3 py-2 text-xs md:text-sm outline-none transition-all focus:border-primary min-h-[180px]"
+                  required
                 ></textarea>
               </div>
-              <button className="w-full bg-primary text-white font-bold py-4 rounded-lg hover:bg-primary/90 transition-all flex items-center justify-center gap-2 group cursor-pointer" type="submit">
-                Send Message <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-              </button>
+
+              {statusMessage && (
+                <p className="text-xs md:text-sm text-slate-600 dark:text-slate-300">
+                  {statusMessage}
+                </p>
+              )}
+
+              <div className="pt-2 flex justify-center">
+                <button
+                  className="bg-primary text-white text-xs md:text-sm font-medium px-6 py-2 hover:bg-primary/90 transition-all cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+                  type="submit"
+                  disabled={isSending}
+                >
+                  {isSending ? 'Sending...' : 'Send Message'}
+                </button>
+              </div>
             </form>
           </motion.div>
         </div>

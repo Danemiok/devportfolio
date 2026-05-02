@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import type { Section } from '../types';
 
-const sections: Section[] = ['home', 'about', 'skills', 'experience', 'projects', 'contact'];
+const sections: Section[] = ['home', 'about', 'skills', 'experience', 'resume', 'projects', 'contact'];
 
 export function useActiveSection() {
   const [activeSection, setActiveSection] = useState<Section>(sections[0]);

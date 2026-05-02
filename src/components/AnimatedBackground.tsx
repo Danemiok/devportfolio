@@ -14,18 +14,8 @@ interface Particle {
 
 export default function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [particles, setParticles] = useState<Particle[]>([]);
-  const animationRef = useRef<number>();
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  const animationRef = useRef<number | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -108,29 +98,14 @@ export default function AnimatedBackground() {
           particle.speedY *= -1;
         }
 
-        // Calculate distance from mouse
-        const dx = mousePosition.x - particle.x;
-        const dy = mousePosition.y - particle.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-
-        // Mouse interaction - particles are attracted to cursor
-        if (distance < 250) { // Increased interaction radius: 250px for more dramatic effect
-          const force = (250 - distance) / 250;
-          particle.x += (dx / distance) * force * 2.5; // Slightly reduced force for performance
-          particle.y += (dy / distance) * force * 2.5;
-        }
-
         // Draw particle
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         ctx.fillStyle = particle.color; // Use individual particle color
         ctx.fill();
         
-        // Add glow effect
-        ctx.shadowBlur = 8; // Slightly reduced for performance with more particles
-        ctx.shadowColor = particle.color;
+        // Draw particle without glow
         ctx.fill();
-        ctx.shadowBlur = 0;
 
         // Draw connections between nearby particles
         particles.forEach((otherParticle) => {
@@ -145,16 +120,9 @@ export default function AnimatedBackground() {
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
             
-            // Create gradient for connection lines
-            const gradient = ctx.createLinearGradient(
-              particle.x, particle.y, 
-              otherParticle.x, otherParticle.y
-            );
-            gradient.addColorStop(0, particle.color + '40'); // Add transparency
-            gradient.addColorStop(1, otherParticle.color + '40');
-            
-            ctx.strokeStyle = gradient;
-            ctx.lineWidth = 1; // Thicker connection lines
+            // Simple line without gradient
+            ctx.strokeStyle = particle.color + '30';
+            ctx.lineWidth = 1;
             ctx.stroke();
           }
         });
@@ -170,7 +138,7 @@ export default function AnimatedBackground() {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [particles, mousePosition]);
+  }, [particles]);
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden">
@@ -178,7 +146,7 @@ export default function AnimatedBackground() {
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
       />
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/20 via-transparent to-purple-50/20 dark:from-blue-900/10 dark:via-transparent dark:to-purple-900/10" />
+      <div className="absolute inset-0 bg-transparent" />
     </div>
   );
 }
