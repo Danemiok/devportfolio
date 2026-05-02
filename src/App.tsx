@@ -6,9 +6,9 @@ import {
   ResumeSection,
   ProjectsSection, 
   ContactSection,
+  AnimatedBackground,
   ScrollToTop 
 } from './components';
-import AnimatedBackground from './components/AnimatedBackground';
 import { useTheme } from './hooks/useTheme';
 import { useActiveSection } from './hooks/useActiveSection';
 import { 
@@ -46,7 +46,6 @@ export default function App() {
           <ProjectsSection projects={projects} />
           <ContactSection />
         </main>
-
       </div>
     </div>
   );

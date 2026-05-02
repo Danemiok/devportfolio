@@ -1,59 +1,33 @@
-import { motion } from 'motion/react';
-import { Mail, MapPin, Send, Phone } from 'lucide-react';
 import { useState } from 'react';
+import { motion } from 'motion/react';
+import { Mail, MapPin, Phone } from 'lucide-react';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    subject: '',
     message: '',
   });
-  const [isSending, setIsSending] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
   const contactEmail = 'dane.miok@student.passerellesnumeriques.org';
   const mapUrl = 'https://www.google.com/maps?q=Passerelles+Numeriques,+Phnom+Penh,+Cambodia&z=16&output=embed';
   const mapsLink = 'https://maps.app.goo.gl/MBK93Wdf5vSSEsA68';
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    setIsSending(true);
-    setStatusMessage('');
+    const subject = encodeURIComponent(formData.subject || `Portfolio Contact from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`,
+    );
 
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json().catch(() => null);
-
-      if (!response.ok) {
-        throw new Error(data?.error || 'Failed to send message.');
-      }
-
-      setStatusMessage('Your message was sent successfully.');
-      setFormData({
-        name: '',
-        email: '',
-        message: '',
-      });
-    } catch (error) {
-      console.error('Failed to send contact form email:', error);
-      const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
-      const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
-      window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
-      return;
-    } finally {
-      setIsSending(false);
-    }
+    window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+    setStatusMessage('Opening your email app.');
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
@@ -159,6 +133,9 @@ export default function ContactSection() {
               <div>
                 <label className="block text-xs md:text-sm text-slate-700 dark:text-slate-300 mb-2">Subject</label>
                 <input
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
                   className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-3 py-2 text-xs md:text-sm outline-none transition-all focus:border-primary"
                   type="text"
                 />
@@ -172,7 +149,7 @@ export default function ContactSection() {
                   onChange={handleChange}
                   className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-3 py-2 text-xs md:text-sm outline-none transition-all focus:border-primary min-h-[180px]"
                   required
-                ></textarea>
+                />
               </div>
 
               {statusMessage && (
@@ -183,11 +160,10 @@ export default function ContactSection() {
 
               <div className="pt-2 flex justify-center">
                 <button
-                  className="bg-primary text-white text-xs md:text-sm font-medium px-6 py-2 hover:bg-primary/90 transition-all cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="bg-primary text-white text-xs md:text-sm font-medium px-6 py-2 hover:bg-primary/90 transition-all cursor-pointer"
                   type="submit"
-                  disabled={isSending}
                 >
-                  {isSending ? 'Sending...' : 'Send Message'}
+                  Send Message
                 </button>
               </div>
             </form>

@@ -5,4 +5,6 @@ export { default as ExperienceSection } from './ExperienceSection';
 export { default as ResumeSection } from './ResumeSection';
 export { default as ProjectsSection } from './ProjectsSection';
 export { default as ContactSection } from './ContactSection';
+export { default as AnimatedBackground } from './AnimatedBackground';
+export { default as Footer } from './Footer';
 export { default as ScrollToTop } from './ScrollToTop';
