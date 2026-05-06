@@ -64,7 +64,7 @@ export default function HeroSection({ orbitSkills }: HeroSectionProps) {
             <div className="relative group">
               <div className="relative bg-slate-100 dark:bg-slate-900 rounded-full overflow-hidden aspect-square border-4 border-primary/20 flex items-center justify-center">
                 <img 
-                  src="/images/portfoliio.png" 
+                  src="/images/portfolio1.png" 
                   alt="Professional Portrait" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
