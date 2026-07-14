@@ -36,12 +36,22 @@ export default function ResumeSection() {
   return (
     <section id="resume" className="py-20">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">Resume</h2>
-          <div className="mt-4 h-1 w-10 bg-primary rounded-full" />
+        <div className="mb-8 flex items-start justify-between">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">Resume</h2>
+            <div className="mt-4 h-1 w-10 bg-primary rounded-full" />
+          </div>
+          <a
+            href="/resume/Software-Development-CV.pdf"
+            download="Software-Development-CV.pdf"
+            className="btn-primary-glass px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider flex items-center gap-2 shrink-0"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download - Resume
+          </a>
         </div>
 
-        <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm max-w-5xl mb-10 leading-relaxed">
+        <p className="text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed mb-8 ax-w-5xl mb-10 leading-relaxed">
           For this page, I would like to show you about my resume that include all informations from me such as my personal information, Education, Work Experience, and other
         </p>
 
@@ -50,11 +60,11 @@ export default function ResumeSection() {
             <SectionBlock title="Summary">
               <div className={timelineClassName}>
                 <TimelineDot />
-                <h4 className="text-xs md:text-sm font-semibold uppercase tracking-wide text-slate-900 dark:text-white mb-2">DANE MIOK</h4>
-                <p className="text-slate-600 dark:text-slate-400 italic text-xs md:text-sm mb-4 leading-relaxed">
+                <h4 className="text-sm md:text-base font-semibold uppercase tracking-wide text-slate-900 dark:text-white mb-2">DANE MIOK</h4>
+                <p className="text-slate-600 dark:text-slate-400 italic text-sm md:text-base mb-4 leading-relaxed">
                   My name is Dane Miok. I&apos;m a Web Developer.
                 </p>
-                <ul className="space-y-2 text-slate-700 dark:text-slate-300 text-xs md:text-sm">
+                <ul className="space-y-2 text-slate-700 dark:text-slate-300 text-sm md:text-base">
                   {resumeContactInfo.map((line) => (
                     <li key={line} className="flex items-start gap-2 leading-relaxed">
                       <span className="mt-2 size-1.5 rounded-full bg-slate-900 dark:bg-slate-100 shrink-0" />
@@ -79,12 +89,12 @@ export default function ResumeSection() {
                     <h4 className="text-xs md:text-sm font-bold uppercase tracking-wide text-slate-900 dark:text-white mb-2">
                       {item.title}
                     </h4>
-                    <span className="inline-block bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs md:text-sm font-semibold px-4 py-1 mb-3">
+                    <span className="inline-block glass text-slate-600 dark:text-slate-300 text-xs md:text-sm font-semibold px-4 py-1 mb-3">
                       {item.period}
                     </span>
-                    <p className="text-slate-500 dark:text-slate-400 italic text-xs md:text-sm mb-3 leading-relaxed">{item.subtitle}</p>
+                    <p className="text-slate-500 dark:text-slate-400 italic text-sm md:text-base mb-3 leading-relaxed">{item.subtitle}</p>
                     {item.description && (
-                      <p className="text-slate-700 dark:text-slate-300 leading-relaxed max-w-xl text-xs md:text-sm">{item.description}</p>
+                      <p className="text-slate-700 dark:text-slate-300 leading-relaxed max-w-xl text-sm md:text-base">{item.description}</p>
                     )}
                   </motion.div>
                 ))}
@@ -95,15 +105,15 @@ export default function ResumeSection() {
               <div className="space-y-5">
                 <div className={timelineClassName}>
                   <TimelineDot />
-                  <p className="text-slate-500 dark:text-slate-400 italic text-xs md:text-sm mb-3">Hard Skills</p>
-                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-xs md:text-sm">
+                  <p className="text-slate-500 dark:text-slate-400 italic text-sm md:text-base mb-3">Hard Skills</p>
+                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-sm md:text-base">
                     {resumeHardSkills.join(', ')}.
                   </p>
                 </div>
                 <div className={timelineClassName}>
                   <TimelineDot />
-                  <p className="text-slate-500 dark:text-slate-400 italic text-xs md:text-sm mb-3">Soft Skills</p>
-                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-xs md:text-sm">
+                  <p className="text-slate-500 dark:text-slate-400 italic text-sm md:text-base mb-3">Soft Skills</p>
+                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-sm md:text-base">
                     {resumeSoftSkills.join(', ')}.
                   </p>
                 </div>
@@ -113,7 +123,7 @@ export default function ResumeSection() {
             <SectionBlock title="Languages">
               <div className={timelineClassName}>
                 <TimelineDot />
-                <ul className="space-y-2 text-slate-700 dark:text-slate-300 text-xs md:text-sm">
+                <ul className="space-y-2 text-slate-700 dark:text-slate-300 text-sm md:text-base">
                   {resumeLanguages.map((language) => (
                     <li key={language} className="flex items-start gap-2 leading-relaxed">
                       <span className="mt-2 size-1.5 rounded-full bg-slate-900 dark:bg-slate-100 shrink-0" />
@@ -127,7 +137,7 @@ export default function ResumeSection() {
             <SectionBlock title="Profile">
               <div className={timelineClassName}>
                 <TimelineDot />
-                <ul className="space-y-2 text-slate-700 dark:text-slate-300 text-xs md:text-sm">
+                <ul className="space-y-2 text-slate-700 dark:text-slate-300 text-sm md:text-base">
                   {resumeProfile.map((item) => (
                     <li key={item.label} className="flex items-start gap-2 leading-relaxed">
                       <span className="mt-2 size-1.5 rounded-full bg-slate-900 dark:bg-slate-100 shrink-0" />
@@ -148,14 +158,14 @@ export default function ResumeSection() {
                   {resumeActivities.map((group) => (
                     <div key={group.title} className={timelineClassName}>
                       <TimelineDot />
-                    <h4 className="text-xs md:text-sm font-bold uppercase tracking-wide text-slate-900 dark:text-white mb-2">
+                    <h4 className="text-sm md:text-base font-bold uppercase tracking-wide text-slate-900 dark:text-white mb-2">
                         {group.title}
                       </h4>
-                      <span className="inline-block bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs md:text-sm font-semibold px-4 py-1 mb-3">
+                      <span className="inline-block glass text-slate-600 dark:text-slate-300 text-xs md:text-sm font-semibold px-4 py-1 mb-3">
                         {group.period}
                       </span>
-                      <p className="text-slate-500 dark:text-slate-400 italic text-xs md:text-sm mb-4 leading-relaxed">{group.subtitle}</p>
-                      <ul className="space-y-3 text-slate-700 dark:text-slate-300 text-xs md:text-sm">
+                      <p className="text-slate-500 dark:text-slate-400 italic text-sm md:text-base mb-4 leading-relaxed">{group.subtitle}</p>
+                      <ul className="space-y-3 text-slate-700 dark:text-slate-300 text-sm md:text-base">
                         {group.items.map((item) => (
                           <li key={item} className="flex items-start gap-2 leading-relaxed">
                             <span className="mt-2 size-1.5 rounded-full bg-slate-900 dark:bg-slate-100 shrink-0" />
@@ -183,10 +193,10 @@ export default function ResumeSection() {
                     <h4 className="text-sm md:text-base font-bold text-slate-900 dark:text-white mb-2">
                       {project.title}
                     </h4>
-                    <span className="inline-block bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs md:text-sm font-semibold px-4 py-1 mb-3">
+                    <span className="inline-block glass text-slate-600 dark:text-slate-300 text-xs md:text-sm font-semibold px-4 py-1 mb-3">
                       {project.date}
                     </span>
-                    <ul className="space-y-3 text-slate-700 dark:text-slate-300 text-xs md:text-sm">
+                    <ul className="space-y-3 text-slate-700 dark:text-slate-300 text-sm md:text-base">
                       {project.bullets.length > 0 ? (
                         project.bullets.map((bullet) => (
                           <li key={bullet} className="flex items-start gap-2 leading-relaxed">
@@ -195,16 +205,27 @@ export default function ResumeSection() {
                           </li>
                         ))
                       ) : (
-                        <li className="text-slate-600 dark:text-slate-400 italic text-xs md:text-sm">
+                        <li className="text-slate-600 dark:text-slate-400 italic text-sm md:text-base">
                           Booking Trip app
                         </li>
                       )}
-                    </ul>
+                    </ul> 
                   </motion.div>
                 ))}
               </div>
             </SectionBlock>
           </div>
+        </div>
+
+        <div className="mt-12 flex justify-center">
+          <a
+            href="/resume/Software-Development-CV.pdf"
+            download="Software-Development-CV.pdf"
+            className="btn-primary-glass px-4 py-2 rounded-lg font-bold text-xs uppercase tracking-wider flex items-center gap-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download - Resume
+          </a>
         </div>
       </div>
     </section>

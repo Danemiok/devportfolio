@@ -15,9 +15,10 @@ import {
   frontendSkills, 
   backendSkills, 
   experiences, 
-  projects, 
-  orbitSkills 
+  projects,
+  orbitSkills
 } from './utils/data';
+
 
 export default function App() {
   const { isDarkMode, toggleTheme } = useTheme();
@@ -41,6 +42,7 @@ export default function App() {
             backendSkills={backendSkills}
             tools={orbitSkills}
           />
+
           <ExperienceSection experiences={experiences} />
           <ResumeSection />
           <ProjectsSection projects={projects} />

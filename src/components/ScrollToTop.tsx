@@ -35,10 +35,10 @@ export default function ScrollToTop() {
           exit={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.2 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-40 bg-primary text-white p-3 rounded-full hover:bg-primary/90 transition-all hover:scale-110 cursor-pointer"
+          className="fixed bottom-8 right-8 z-40 bg-primary text-white p-2 rounded-full hover:bg-primary/90 transition-all hover:scale-110 cursor-pointer"
           aria-label="Scroll to top"
         >
-          <ChevronUp size={24} />
+          <ChevronUp size={20} />
         </motion.button>
       )}
     </AnimatePresence>

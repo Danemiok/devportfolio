@@ -10,7 +10,7 @@ export default function ContactSection() {
     message: '',
   });
   const [statusMessage, setStatusMessage] = useState('');
-  const contactEmail = 'dane.miok@student.passerellesnumeriques.org';
+  const contactEmail = 'miokdane2006@gmail.com';
   const mapUrl = 'https://www.google.com/maps?q=Passerelles+Numeriques,+Phnom+Penh,+Cambodia&z=16&output=embed';
   const mapsLink = 'https://maps.app.goo.gl/MBK93Wdf5vSSEsA68';
 
@@ -47,28 +47,28 @@ export default function ContactSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           <div className="space-y-8">
-            <div className="rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-5 md:p-7">
+            <div className="rounded-2xl glass-card p-5 md:p-7">
               <div className="space-y-6">
                 <div className="flex items-start gap-5">
-                  <div className="size-11 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                    <div className="size-11 rounded-full glass text-primary flex items-center justify-center shrink-0">
                     <MapPin size={18} />
                   </div>
                   <div>
                     <p className="text-xs md:text-sm font-semibold text-slate-900 dark:text-white leading-none mb-2">Location:</p>
-                    <p className="text-xs md:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">BP 511, Phum Tropeang Chhuk (Borey Sorla) Sangtak, Street 371, Phnom Penh</p>
+                    <p className="text-xs md:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Sangkat Tek Thla, Khan Sen Sok, Phnom Penh</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-5">
-                  <div className="size-11 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                    <div className="size-11 rounded-full glass text-primary flex items-center justify-center shrink-0">
                     <Mail size={18} />
                   </div>
                   <div>
                     <p className="text-xs md:text-sm font-semibold text-slate-900 dark:text-white leading-none mb-2">Email:</p>
-                    <p className="text-xs md:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">dane.miok@student.passerellesnumeriques.org</p>
+                    <p className="text-xs md:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">miokdane2006@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-5">
-                  <div className="size-11 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                    <div className="size-11 rounded-full glass text-primary flex items-center justify-center shrink-0">
                     <Phone size={18} />
                   </div>
                   <div>
@@ -79,12 +79,12 @@ export default function ContactSection() {
               </div>
             </div>
 
-            <div className="relative w-full overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-900 shadow-sm">
+            <div className="relative w-full overflow-hidden rounded-2xl border border-slate-200/50 dark:border-slate-800/50 glass-card">
               <a
                 href={mapsLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute left-3 top-3 z-10 inline-flex items-center gap-2 rounded-md bg-white/95 px-3 py-1.5 text-xs md:text-sm font-semibold text-slate-900 shadow-sm transition-colors hover:bg-white"
+                className="absolute left-3 top-3 z-10 inline-flex items-center gap-2 rounded-md glass px-3 py-1.5 text-xs md:text-sm font-semibold text-slate-900 shadow-sm transition-colors"
               >
                 Open in Maps
                 <span aria-hidden="true">↗</span>
@@ -102,7 +102,7 @@ export default function ContactSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="bg-white dark:bg-slate-800 p-6 md:p-7 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm"
+            className="glass-card p-6 md:p-7 rounded-2xl"
           >
             <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -160,7 +160,7 @@ export default function ContactSection() {
 
               <div className="pt-2 flex justify-center">
                 <button
-                  className="bg-primary text-white text-xs md:text-sm font-medium px-6 py-2 hover:bg-primary/90 transition-all cursor-pointer"
+                  className="btn-primary-glass text-xs font-medium px-4 py-2 cursor-pointer"
                   type="submit"
                 >
                   Send Message

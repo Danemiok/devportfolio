@@ -29,7 +29,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 transition-all"
+              className="group glass-card rounded-xl overflow-hidden transition-all"
             >
               <div className="aspect-video relative overflow-hidden bg-slate-900">
                 <img 
@@ -47,18 +47,18 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                     target.src = fallbackProjectImage;
                   }}
                 />
-                <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <div className="absolute inset-0 bg-primary/10 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   {project.url ? (
                     <a
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-white text-primary px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 hover:scale-105"
+                      className="btn-primary-glass px-4 py-2 rounded-lg font-bold text-xs flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500"
                     >
                       View Project <ExternalLink size={14} />
                     </a>
                   ) : (
-                    <span className="bg-white text-primary px-4 py-2 rounded-lg font-bold text-xs md:text-sm flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                    <span className="btn-primary-glass px-4 py-2 rounded-lg font-bold text-xs flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
                       View Project <ExternalLink size={14} />
                     </span>
                   )}
@@ -67,7 +67,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
               <div className="p-6">
                 <div className="flex gap-2 mb-3">
                   {project.tags.map(tag => (
-                    <span key={tag} className="text-[10px] font-bold px-2 py-0.5 rounded bg-primary/10 text-primary uppercase">{tag}</span>
+                    <span key={tag} className="text-[10px] font-bold px-2 py-0.5 rounded glass text-primary uppercase">{tag}</span>
                   ))}
                 </div>
                 {project.url ? (

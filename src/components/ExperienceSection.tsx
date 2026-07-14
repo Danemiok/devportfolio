@@ -22,13 +22,13 @@ export default function ExperienceSection({ experiences }: ExperienceSectionProp
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="relative pl-8 border-l-2 border-slate-200 dark:border-slate-800"
             >
-              <div className={`absolute -left-[11px] top-0 size-5 rounded-full border-4 border-background-light dark:border-background-dark ${exp.active ? 'bg-primary' : 'bg-slate-300 dark:bg-slate-700'}`}></div>
+              <div className={`absolute -left-[11px] top-0 size-5 rounded-full border-4 border-background-light dark:border-background-dark ${exp.active ? 'bg-primary' : 'glass'}`}></div>
               <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
                 <h3 className="text-xl font-bold">{exp.role}</h3>
-                <span className="text-primary font-semibold text-xs md:text-sm">{exp.period}</span>
+                <span className="text-primary font-semibold text-sm md:text-base">{exp.period}</span>
               </div>
-              <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm max-w-3xl">{exp.company}</p>
-              <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm max-w-3xl">
+              <p className="text-slate-600 dark:text-slate-400 text-sm md:text-base max-w-3xl">{exp.company}</p>
+              <p className="text-slate-600 dark:text-slate-400 text-sm md:text-base max-w-3xl">
                 {exp.description}
               </p>
             </motion.div>

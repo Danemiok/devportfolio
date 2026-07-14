@@ -1,6 +1,6 @@
-import { motion } from 'motion/react';
-import type { Skill } from '../types';
-import { useTypingAnimation } from '../hooks/useTypingAnimation';
+// import { motion } from 'motion/react';
+// import type { Skill } from '../types';
+// import { useTypingAnimation } from '../hooks/useTypingAnimation';
 
 
 interface HeroSectionProps {
@@ -13,9 +13,9 @@ function TypingText({ phrases }: { phrases: string[] }) {
   const { displayText } = useTypingAnimation(phrases);
 
   return (
-    <span className="text-primary">
+    <span className="inline-flex items-end text-primary whitespace-nowrap">
       {displayText}
-      <span className="inline-block w-[3px] h-7 ml-1.5 bg-primary animate-[blink_1s_step-end_infinite]" />
+      <span className="inline-block w-[2px] sm:w-[3px] h-[0.9em] md:h-7 ml-1 sm:ml-1.5 bg-primary animate-[blink_1s_step-end_infinite]" />
     </span>
   );
 }
@@ -31,7 +31,7 @@ export default function HeroSection({ orbitSkills }: HeroSectionProps) {
             transition={{ duration: 0.6 }}
             className="flex-1 space-y-8"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-primary text-sm md:text-base font-bold uppercase tracking-wider border-primary/20">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
@@ -40,17 +40,25 @@ export default function HeroSection({ orbitSkills }: HeroSectionProps) {
             </div>
             <h1 className="lg:text-6xl leading-tight tracking-tight">
               Miok Dane<br className="md:hidden" />
-              <span className="block lg:text-4xl">I'm <TypingText phrases={roles} /></span>
+              <span className="block text-base md:text-lg lg:text-4xl">I'm <TypingText phrases={roles} /></span>
             </h1>
-            <p className="text-xs md:text-sm dark:text-slate-400 max-w-2xl leading-relaxed">
+            <p className="text-base md:text-lg dark:text-slate-400 max-w-2xl leading-relaxed">
               I'm a developer specializing in building exceptional digital experiences. With a strong foundation in both frontend and backend technologies.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a href="#projects" className="bg-primary text-white h-12 px-8 rounded-lg font-bold flex items-center justify-center hover:scale-105 transition-transform">
+              <a href="#projects" className="btn-primary-glass px-4 py-2 rounded-lg font-bold text-xs flex items-center justify-center">
                 View Projects
               </a>
-              <a href="#contact" className="bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-white h-12 px-8 rounded-lg font-bold flex items-center justify-center hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">
+              <a href="#contact" className="btn-glass px-4 py-2 rounded-lg font-bold text-xs flex items-center justify-center">
                 Contact Me
+              </a>
+              <a
+                href="/resume/Software-Development-CV.pdf"
+                download="Software-Development-CV.pdf"
+                className="btn-glass px-4 py-2 rounded-lg font-bold text-xs flex items-center justify-center gap-2"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download - Resume
               </a>
             </div>
           </motion.div>
@@ -77,7 +85,7 @@ export default function HeroSection({ orbitSkills }: HeroSectionProps) {
                     return (
                       <div
                         key={skill.name}
-                        className="orbit-icon bg-white dark:bg-slate-800 p-1.5 rounded-lg border border-slate-200 dark:border-slate-700"
+                        className="orbit-icon glass p-1.5 rounded-lg"
                         style={{ transform: `rotate(${angle}deg) translate(120px) rotate(-${angle}deg)` }}
                       >
                         <img
