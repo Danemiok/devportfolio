@@ -1,6 +1,6 @@
-// import { motion } from 'motion/react';
-// import type { Skill } from '../types';
-// import { useTypingAnimation } from '../hooks/useTypingAnimation';
+import { motion } from 'motion/react';
+import type { Skill } from '../types';
+import { useTypingAnimation } from '../hooks/useTypingAnimation';
 
 
 interface HeroSectionProps {

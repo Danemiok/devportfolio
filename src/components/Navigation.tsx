@@ -1,12 +1,12 @@
 import { useState } from 'react';
-// import { Menu, X, Moon, Sun } from 'lucide-react';
-// import type { Section } from '../types';
+import { Menu, X, Moon, Sun } from 'lucide-react';
+import type { Section } from '../types';
 
-// interface NavigationProps {
-//   activeSection: Section;
-//   isDarkMode: boolean;
-//   onToggleTheme: () => void;
-// }
+interface NavigationProps {
+  activeSection: Section;
+  isDarkMode: boolean;
+  onToggleTheme: () => void;
+}
 
 export default function Navigation({ activeSection, isDarkMode, onToggleTheme }: NavigationProps) {
   const navItems = ['Home', 'About', 'Skills', 'Experience', 'Resume', 'Projects', 'Contact'] as const;
