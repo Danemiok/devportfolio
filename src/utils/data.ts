@@ -36,7 +36,14 @@ export const experiences: Experience[] = [
 
 export const projects: Project[] = [
   {
-    title: 'Restaurant Management System (RMS)',
+    title: 'Student Internship Follow-up System',
+    tags: ['Vue 3', 'Laravel 12', 'TypeScript', 'MySQL'],
+    description: 'An internship management system for tracking placements, weekly worklogs, tutor follow-ups, and company evaluations across Admin, Tutor, Student, and Supervisor roles.',
+    image: '/project/internship-system.png',
+    url: 'https://github.com/Danemiok/student-internship-system',
+  },
+  {
+    title: 'Restaurant System',
     tags: ['Node.js', 'TypeScript', 'MySQL', 'TypeORM'],
     description: 'A RESTful system for managing restaurant operations with JWT authentication and role-based authorization (Admin, Chef, Cashier, Customer). Includes order management, payments, and promotions.',
     image: '/project/rms.png',
@@ -71,7 +78,7 @@ export const resumeContactInfo = [
   '+855 81 634 649',
   'miokdane2006@gmail.com',
   'Sangkat Tek Thla, Khan Sen Sok, Phnom Penh',
-  'https://portfolio.dane.online',
+  'https://portfolio.dane-website.online',
 ];
 
 export const resumeEducation = [
@@ -128,9 +135,18 @@ export const resumeActivities = [
 ];
 
 export const resumeSchoolProjects = [
-
   {
-    title: 'E-Commerce Online shop',
+    title: 'Student Internship Follow-up System',
+    date: 'July 2026 (4 Weeks)',
+    bullets: [
+      'Developed a full-stack internship management system using Vue 3, Laravel 12, TypeScript, and MySQL.',
+      'Implemented Role-Based Access Control (RBAC) via Sanctum for Admin, Tutor, Student, and Company Supervisor roles.',
+      'Built feature modules for student worklogs, follow-up meeting notes, issue tracking, and company evaluations.',
+      'Designed database schemas, REST APIs, and responsive UI components using Agile Scrum methodology.',
+    ],
+  },
+  {
+    title: 'Online Shopping Platform',
     date: 'June 19 - June 30, 2026',
     bullets: ['Developed a full-stack online shop using Laravel 12 and Vue 3 with TypeScript.',
       'Built a REST API and Blade admin panel for managing products, orders, and users.',
@@ -140,7 +156,7 @@ export const resumeSchoolProjects = [
     ],
   },
   {
-    title: 'Restaurant Management System (RMS)',
+    title: 'Restaurant System',
     date: 'May  18 - June 08, 2026',
     bullets: [
       'Led a team of 3 to build a RESTful API with Node.js, TypeScript, JWT auth, and role-based access control (ADMIN, CHEF, CASHIER, CUSTOMER)',
