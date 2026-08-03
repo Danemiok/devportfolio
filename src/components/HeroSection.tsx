@@ -7,7 +7,7 @@ interface HeroSectionProps {
   orbitSkills: Skill[];
 }
 
-const roles = ['Developer', 'Designer'];
+const roles = ['Web Developer', 'Full-stack Developer'];
 
 function TypingText({ phrases }: { phrases: string[] }) {
   const { displayText } = useTypingAnimation(phrases);
@@ -72,7 +72,7 @@ export default function HeroSection({ orbitSkills }: HeroSectionProps) {
             <div className="relative group">
               <div className="relative bg-slate-100 dark:bg-slate-900 rounded-full overflow-hidden aspect-square border-4 border-primary/20 flex items-center justify-center">
                 <img 
-                  src="/images/portfolio1.png" 
+                  src="/images/portfolio.png" 
                   alt="Professional Portrait" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
